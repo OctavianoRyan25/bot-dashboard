@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090d16">
+  <title>Bot Assistant Hub — Personal Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Desktop Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <button class="brand" data-view="overview" aria-label="Dashboard utama">
+          <div class="brand-mark">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a8 8 0 0 0-8 8v12l3-3 2.5 2.5L12 19l2.5 2.5L17 19l3 3V10a8 8 0 0 0-8-8z"/>
+              <circle cx="9" cy="10" r="1.2" fill="currentColor"/>
+              <circle cx="15" cy="10" r="1.2" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="brand-info">
+            <span class="brand-title">BotHub</span>
+            <span class="brand-subtitle">Personal AI Assistant</span>
+          </div>
+        </button>
+      </div>
+
+      <nav class="desktop-nav" aria-label="Navigasi utama">
+        <div class="nav-group-label">Menu Utama</div>
+        <button class="nav-item active" data-view="overview">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </span>
+          <span class="nav-text">Ringkasan</span>
+        </button>
+        <button class="nav-item" data-view="finance">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+          </span>
+          <span class="nav-text">Keuangan</span>
+        </button>
+        <button class="nav-item" data-view="health">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5 9.04 11l6 2.5-3.04 5.5"/></svg>
+          </span>
+          <span class="nav-text">Kesehatan</span>
+        </button>
+        <button class="nav-item" data-view="profile">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          <span class="nav-text">Profil & Target</span>
+        </button>
+        <button class="nav-item" data-view="assistant">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+          </span>
+          <span class="nav-text">Asisten AI</span>
+          <span class="nav-badge">AI</span>
+        </button>
+        <button class="nav-item" data-view="settings">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+          </span>
+          <span class="nav-text">Pengaturan</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-status">
+          <span class="status-indicator">
+            <span class="status-dot"></span>
+            <span class="status-ping"></span>
+          </span>
+          <span id="sideStatus" class="status-text">Memeriksa API</span>
+        </div>
+        <div class="theme-toggle-row">
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Ganti mode tampilan" title="Ganti Tema">
+            <span class="theme-icon sun-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            </span>
+            <span class="theme-icon moon-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            </span>
+            <span class="theme-label">Tema</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="date-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            <span id="todayLabel"></span>
+          </div>
+          <h1 id="pageTitle">Ringkasan</h1>
+        </div>
+
+        <div class="topbar-actions">
+          <div class="demo-badge-wrap" id="demoBanner" style="display: none;">
+            <span class="demo-pill">Mode Demo (Offline)</span>
+          </div>
+          <button class="icon-button" id="refreshButton" aria-label="Refresh data" title="Segarkan Data">
+            <svg class="refresh-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- View: Overview -->
+      <section class="view active" id="view-overview">
+        <!-- Physical & Caloric Summary Banner -->
+        <div class="overview-profile-bar" id="overviewProfileBar">
+          <div class="profile-quick-item">
+            <span class="quick-icon">🧬</span>
+            <div>
+              <span class="quick-label">BMR (Basal)</span>
+              <strong id="quickBMR">— kcal</strong>
+            </div>
+          </div>
+          <div class="profile-quick-divider"></div>
+          <div class="profile-quick-item">
+            <span class="quick-icon">🔥</span>
+            <div>
+              <span class="quick-label">TDEE (Kebutuhan)</span>
+              <strong id="quickTDEE">— kcal</strong>
+            </div>
+          </div>
+          <div class="profile-quick-divider"></div>
+          <div class="profile-quick-item">
+            <span class="quick-icon">⚖️</span>
+            <div>
+              <span class="quick-label">Metrik Fisik</span>
+              <strong id="quickMetrics">— cm / — kg</strong>
+            </div>
+          </div>
+          <button class="profile-quick-btn" data-view-link="profile">Kelola Profil →</button>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card metric-finance">
+            <div class="metric-head">
+              <span class="metric-label">Pengeluaran Bulan Ini</span>
+              <div class="metric-icon coral">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+            </div>
+            <div class="metric-body">
+              <strong id="spentValue" class="metric-value">—</strong>
+              <div class="metric-sub">
+                <span id="spentCaption" class="caption-text">Bulan ini</span>
+              </div>
+            </div>
+            <div class="progress-wrap">
+              <div class="progress-info">
+                <span>Budget terpakai</span>
+                <span id="spentPercentLabel">0%</span>
+              </div>
+              <div class="progress"><span id="budgetProgress"></span></div>
+            </div>
+          </article>
+
+          <article class="metric-card metric-health">
+            <div class="metric-head">
+              <span class="metric-label">Asupan Kalori</span>
+              <div class="metric-icon blue">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+              </div>
+            </div>
+            <div class="metric-body">
+              <strong id="calorieValue" class="metric-value">—</strong>
+              <div class="metric-sub">
+                <span id="calorieCaption" class="caption-text">Hari ini</span>
+              </div>
+            </div>
+            <div class="metric-card-footer">
+              <button class="card-inline-action" data-view-link="health">Lihat rincian nutrisi →</button>
+            </div>
+          </article>
+
+          <article class="metric-card metric-activity">
+            <div class="metric-head">
+              <span class="metric-label">Aktivitas Olahraga</span>
+              <div class="metric-icon green">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14"/><path d="M18 5v14"/><path d="M3 10v4"/><path d="M21 10v4"/><path d="M6 12h12"/></svg>
+              </div>
+            </div>
+            <div class="metric-body">
+              <strong id="workoutValue" class="metric-value">—</strong>
+              <div class="metric-sub">
+                <span id="workoutCaption" class="caption-text">Sesi bulan ini</span>
+              </div>
+            </div>
+            <div class="metric-card-footer">
+              <button class="card-inline-action" data-view-link="health">Jurnal latihan →</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="content-grid">
+          <!-- Active Reminders -->
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Agenda & Jadwal</p>
+                <h2>Pengingat Aktif</h2>
+              </div>
+              <button class="text-button" data-view-link="finance">
+                <span>Kelola</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <div class="reminder-list" id="homeReminders">
+              <div class="empty-state">
+                <div class="spinner"></div>
+                <p>Memuat pengingat…</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Recent Expenses -->
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Aktivitas Terbaru</p>
+                <h2>Pengeluaran Terakhir</h2>
+              </div>
+              <button class="text-button" data-view-link="finance">
+                <span>Buka</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <div class="expense-list" id="homeExpenses">
+              <div class="empty-state">
+                <div class="spinner"></div>
+                <p>Memuat transaksi…</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- View: Finance -->
+      <section class="view" id="view-finance">
+        <!-- Monthly Expense Report & Category Breakdown -->
+        <article class="panel full-width-panel" style="margin-bottom: 20px;">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Laporan Pengeluaran Bulanan (/expenses/report)</p>
+              <h2 id="reportPeriodTitle">Distribusi Anggaran</h2>
+            </div>
+            <div class="filter-controls">
+              <select id="expenseYearSelect" class="compact-select"></select>
+              <select id="expenseMonthSelect" class="compact-select">
+                <option value="1">Januari</option>
+                <option value="2">Februari</option>
+                <option value="3">Maret</option>
+                <option value="4">April</option>
+                <option value="5">Mei</option>
+                <option value="6">Juni</option>
+                <option value="7">Juli</option>
+                <option value="8">Agustus</option>
+                <option value="9">September</option>
+                <option value="10">Oktober</option>
+                <option value="11">November</option>
+                <option value="12">Desember</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="report-overview-row">
+            <div class="report-total-box">
+              <span class="report-total-label">Total Pengeluaran Bulan Ini</span>
+              <strong id="reportTotalSpent" class="report-total-val">—</strong>
+            </div>
+            <div class="report-breakdown-bars" id="categoryBreakdownBars">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </article>
+
+        <div class="split-layout">
+          <!-- Left Column: Forms -->
+          <div class="form-column">
+            <!-- Form Catat Pengeluaran -->
+            <article class="panel" style="margin-bottom: 20px;">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Tambah Transaksi (/expenses)</p>
+                  <h2>Catat Pengeluaran</h2>
+                </div>
+              </div>
+              <form id="expenseForm" class="form-grid">
+                <label>
+                  <span class="label-text">Jumlah (IDR)</span>
+                  <div class="input-prefix-wrap">
+                    <span class="input-prefix">Rp</span>
+                    <input name="amount" type="number" min="1" step="100" placeholder="50.000" required>
+                  </div>
+                </label>
+
+                <label>
+                  <span class="label-text">Kategori</span>
+                  <div class="select-wrap">
+                    <select name="category">
+                      <option value="makan">🍽️ Makan & Minum</option>
+                      <option value="transport">🚗 Transportasi</option>
+                      <option value="hiburan">🎬 Hiburan</option>
+                      <option value="kesehatan">💊 Kesehatan</option>
+                      <option value="belanja">🛍️ Belanja</option>
+                      <option value="tagihan">⚡ Tagihan & Utilitas</option>
+                      <option value="amal">🤲 Donasi & Amal</option>
+                      <option value="lainnya">📦 Lainnya</option>
+                    </select>
+                  </div>
+                </label>
+
+                <label class="full">
+                  <span class="label-text">Keterangan Transaksi</span>
+                  <input name="description" placeholder="Contoh: Kopi pagi, Makan siang bareng tim" required>
+                </label>
+
+                <label class="full">
+                  <span class="label-text">Waktu Transaksi (Opsional / Default: Sekarang)</span>
+                  <input name="occurred_at" type="datetime-local">
+                </label>
+
+                <button class="primary-button full" type="submit">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  <span>Simpan Pengeluaran</span>
+                </button>
+              </form>
+            </article>
+
+            <!-- Reminders Management -->
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Manajemen Pengingat (/reminders)</p>
+                  <h2>Jadwal & Agenda</h2>
+                </div>
+              </div>
+              <form id="reminderForm" class="form-grid compact-form">
+                <label class="full">
+                  <span class="label-text">Judul Pengingat</span>
+                  <input name="title" placeholder="Contoh: Rapat evaluasi bulanan, Minum vitamin" required>
+                </label>
+                <label>
+                  <span class="label-text">Waktu Pelaksanaan</span>
+                  <input name="scheduled_at" type="datetime-local" required>
+                </label>
+                <label>
+                  <span class="label-text">Pengulangan (Recurrence)</span>
+                  <select name="recurrence">
+                    <option value="">Sekali Saja (Tidak Berulang)</option>
+                    <option value="daily">🔁 Setiap Hari (Daily)</option>
+                    <option value="weekly">🔁 Setiap Minggu (Weekly)</option>
+                    <option value="monthly">🔁 Setiap Bulan (Monthly)</option>
+                  </select>
+                </label>
+                <button class="secondary-button full" type="submit">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <span>Tambah Pengingat Baru</span>
+                </button>
+              </form>
+              <div class="reminder-section-title">Daftar Pengingat Mendatang</div>
+              <div class="reminder-list" id="financeReminders"></div>
+            </article>
+          </div>
+
+          <!-- Right Column: Detail Monthly Expense Table / List -->
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Rincian Transaksi (/expenses/detail)</p>
+                <h2>Daftar Transaksi</h2>
+              </div>
+            </div>
+
+            <!-- Category Filter Pills -->
+            <div class="category-filter-pills" id="categoryFilterPills">
+              <button class="cat-pill active" data-cat="">Semua</button>
+              <button class="cat-pill" data-cat="makan">🍽️ Makan</button>
+              <button class="cat-pill" data-cat="transport">🚗 Transport</button>
+              <button class="cat-pill" data-cat="hiburan">🎬 Hiburan</button>
+              <button class="cat-pill" data-cat="kesehatan">💊 Kesehatan</button>
+              <button class="cat-pill" data-cat="belanja">🛍️ Belanja</button>
+              <button class="cat-pill" data-cat="tagihan">⚡ Tagihan</button>
+              <button class="cat-pill" data-cat="amal">🤲 Amal</button>
+              <button class="cat-pill" data-cat="lainnya">📦 Lainnya</button>
+            </div>
+
+            <div class="expense-list full-expense-list" id="detailExpenseList">
+              <div class="empty-state">
+                <div class="spinner"></div>
+                <p>Memuat daftar transaksi bulanan…</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- View: Health -->
+      <section class="view" id="view-health">
+        <div class="health-header-bar">
+          <div>
+            <h2 class="subview-title">Jurnal Nutrisi & Latihan</h2>
+            <p class="subview-desc">Pantau keseimbangan kalori harian dengan BMR & TDEE Anda.</p>
+          </div>
+          <div class="date-selector-wrap">
+            <label for="nutritionDateInput">Pilih Tanggal:</label>
+            <input type="date" id="nutritionDateInput" class="compact-date-input">
+          </div>
+        </div>
+
+        <div class="health-grid">
+          <!-- Nutrition Panel -->
+          <article class="panel nutrition-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Nutrisi Harian (/nutrition/today)</p>
+                <h2>Asupan Kalori & Makro</h2>
+              </div>
+              <span class="status-pill" id="nutritionStatus">—</span>
+            </div>
+
+            <div class="nutrition-hero">
+              <div class="nutrition-ring-container">
+                <div class="nutrition-ring">
+                  <div class="ring-content">
+                    <strong id="nutritionPercent">—</strong>
+                    <span>target kalori</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="macro-cards">
+                <div class="macro-card macro-protein">
+                  <div class="macro-header">
+                    <span class="macro-dot"></span>
+                    <span>Protein</span>
+                  </div>
+                  <strong id="proteinValue" class="macro-val">—</strong>
+                </div>
+                <div class="macro-card macro-carbs">
+                  <div class="macro-header">
+                    <span class="macro-dot"></span>
+                    <span>Karbohidrat</span>
+                  </div>
+                  <strong id="carbsValue" class="macro-val">—</strong>
+                </div>
+                <div class="macro-card macro-fat">
+                  <div class="macro-header">
+                    <span class="macro-dot"></span>
+                    <span>Lemak</span>
+                  </div>
+                  <strong id="fatValue" class="macro-val">—</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="sub-section-head">
+              <h3>Catatan Makanan</h3>
+            </div>
+            <div class="meal-list" id="mealList"></div>
+          </article>
+
+          <!-- Workouts Panel -->
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Aktivitas Fisik (/workouts)</p>
+                <h2>Catatan Olahraga</h2>
+              </div>
+            </div>
+
+            <div class="workout-summary">
+              <div class="summary-box">
+                <div class="summary-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14"/><path d="M18 5v14"/><path d="M3 10v4"/><path d="M21 10v4"/><path d="M6 12h12"/></svg>
+                </div>
+                <div>
+                  <strong id="healthWorkoutSessions">—</strong>
+                  <span class="summary-label">Total Sesi</span>
+                </div>
+              </div>
+              <div class="summary-divider"></div>
+              <div class="summary-box">
+                <div class="summary-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                  <strong id="healthWorkoutMinutes">—</strong>
+                  <span class="summary-label">Menit Latihan</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sub-section-head">
+              <h3>Riwayat Sesi Terakhir</h3>
+            </div>
+            <div class="workout-list" id="workoutList"></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- View: Profile & Targets (NEW: /profile Handler) -->
+      <section class="view" id="view-profile">
+        <div class="profile-metrics-cards">
+          <article class="metric-card">
+            <div class="metric-head">
+              <span class="metric-label">BMR (Metabolisme Basal)</span>
+              <div class="metric-icon coral">🧬</div>
+            </div>
+            <strong id="cardBmrValue" class="metric-value">—</strong>
+            <small class="caption-text">Kalori yang dibakar tubuh saat istirahat total</small>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-head">
+              <span class="metric-label">TDEE (Total Energi Harian)</span>
+              <div class="metric-icon blue">⚡</div>
+            </div>
+            <strong id="cardTdeeValue" class="metric-value">—</strong>
+            <small class="caption-text">Target kalori harian untuk menjaga berat badan</small>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-head">
+              <span class="metric-label">Indeks Massa Tubuh (BMI)</span>
+              <div class="metric-icon green">⚖️</div>
+            </div>
+            <strong id="cardBmiValue" class="metric-value">—</strong>
+            <small id="cardBmiStatus" class="caption-text">—</small>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-head">
+              <span class="metric-label">Gaji / Budget Bulanan</span>
+              <div class="metric-icon coral">💰</div>
+            </div>
+            <strong id="cardSalaryValue" class="metric-value">—</strong>
+            <small class="caption-text">Pagu dasar budget keuangan bulanan</small>
+          </article>
+        </div>
+
+        <article class="panel" style="margin-top: 20px;">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Manajemen Profil Pengguna (/api/v1/profile)</p>
+              <h2>Pengaturan Metrik Fisik & Keuangan</h2>
+            </div>
+          </div>
+          <p class="panel-desc">Perbarui metrik tinggi, berat badan, tingkat aktivitas, dan penghasilan bulanan Anda. Backend Go akan secara otomatis menghitung ulang BMR, TDEE, dan batas pagu budget belanja.</p>
+
+          <form id="profileForm" class="form-grid profile-form-grid">
+            <label>
+              <span class="label-text">Tinggi Badan (cm)</span>
+              <input name="height_cm" type="number" step="0.1" min="50" max="250" placeholder="170" required>
+            </label>
+
+            <label>
+              <span class="label-text">Berat Badan (kg)</span>
+              <input name="weight_kg" type="number" step="0.1" min="20" max="300" placeholder="65" required>
+            </label>
+
+            <label>
+              <span class="label-text">Usia (Tahun)</span>
+              <input name="age" type="number" min="10" max="120" placeholder="25" required>
+            </label>
+
+            <label>
+              <span class="label-text">Jenis Kelamin</span>
+              <select name="gender" required>
+                <option value="male">Laki-laki (Male)</option>
+                <option value="female">Perempuan (Female)</option>
+              </select>
+            </label>
+
+            <label class="full">
+              <span class="label-text">Tingkat Aktivitas Fisik</span>
+              <select name="activity_level" required>
+                <option value="sedentary">Sedentary (Jarang bergerak / Bekerja di meja)</option>
+                <option value="lightly_active">Ringan (Olahraga ringan 1–3 hari/minggu)</option>
+                <option value="moderately_active">Sedang (Olahraga teratur 3–5 hari/minggu)</option>
+                <option value="very_active">Tinggi (Olahraga berat 6–7 hari/minggu)</option>
+                <option value="extra_active">Ekstra Tinggi (Pekerja fisik berat / Latihan 2x sehari)</option>
+              </select>
+            </label>
+
+            <label class="full">
+              <span class="label-text">Gaji Bulanan / Pagu Anggaran (IDR)</span>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">Rp</span>
+                <input name="monthly_salary" type="number" min="0" step="10000" placeholder="8.000.000" required>
+              </div>
+            </label>
+
+            <button class="primary-button full" type="submit">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              <span>Simpan & Sinkronisasi Metrik Profil</span>
+            </button>
+          </form>
+        </article>
+      </section>
+
+      <!-- View: Assistant Chat -->
+      <section class="view" id="view-assistant">
+        <article class="chat-panel">
+          <div class="chat-head">
+            <div class="chat-agent-info">
+              <div class="chat-avatar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+              </div>
+              <div>
+                <strong class="agent-name">Asisten Pribadi</strong>
+                <span class="agent-status"><span class="status-dot"></span> Siap membantu Anda</span>
+              </div>
+            </div>
+            <button class="text-button text-button-subtle" id="clearChat">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              <span>Hapus percakapan</span>
+            </button>
+          </div>
+
+          <div class="chat-messages" id="chatMessages">
+            <div class="empty-state">Memulai percakapan…</div>
+          </div>
+
+          <!-- Quick Prompt Chips -->
+          <div class="chat-suggestions" id="chatSuggestions">
+            <button class="suggestion-chip" data-prompt="Ringkasan pengeluaran bulan ini">📊 Ringkasan Pengeluaran</button>
+            <button class="suggestion-chip" data-prompt="Berapa sisa kalori saya hari ini?">🥗 Sisa Kalori Hari Ini</button>
+            <button class="suggestion-chip" data-prompt="Jadwal pengingat berikutnya apa saja?">⏰ Cek Jadwal Pengingat</button>
+            <button class="suggestion-chip" data-prompt="Berapa BMR dan TDEE saya sekarang?">🧬 Cek BMR & TDEE</button>
+            <button class="suggestion-chip" data-prompt="Buatkan rencana olahraga besok">💪 Rencana Olahraga</button>
+          </div>
+
+          <form class="chat-compose" id="chatForm">
+            <input id="chatInput" autocomplete="off" placeholder="Tulis pesan untuk asisten (misal: 'Berapa sisa uang makan saya?')" required>
+            <button class="send-button" type="submit" aria-label="Kirim Pesan">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+            </button>
+          </form>
+        </article>
+      </section>
+
+      <!-- View: Settings -->
+      <section class="view" id="view-settings">
+        <div class="settings-layout">
+          <!-- Connection Panel -->
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Koneksi Backend</p>
+                <h2>Konfigurasi Endpoint API</h2>
+              </div>
+              <span class="status-pill" id="apiStatus">Belum diperiksa</span>
+            </div>
+            <p class="panel-desc">Tentukan endpoint server bot Telegram/WhatsApp atau REST backend Anda.</p>
+            <form id="settingsForm" class="form-grid">
+              <label class="full">
+                <span class="label-text">Alamat Server / Base URL</span>
+                <input id="apiBaseInput" type="url" placeholder="http://localhost:8080" required>
+              </label>
+              <button class="primary-button full" type="submit">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Simpan & Periksa Koneksi</span>
+              </button>
+            </form>
+
+            <div class="settings-ping-card">
+              <div class="ping-header">
+                <span>Tes Ping Health Check (/api/v1/health)</span>
+                <button id="pingHealthBtn" class="secondary-button compact-btn">Tes Koneksi</button>
+              </div>
+              <div class="ping-result" id="pingResultText">Status: Siap diuji</div>
+            </div>
+
+            <div class="settings-helper-card">
+              <div class="helper-icon">💡</div>
+              <div class="helper-text">
+                <strong>Tips:</strong> Jika backend belum dijalankan, dashboard akan otomatis mengaktifkan mode demo agar seluruh komponen tetap dapat diuji.
+              </div>
+            </div>
+          </article>
+
+          <!-- Briefing Proaktif -->
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Fitur Proaktif Bot (/briefing)</p>
+                <h2>Briefing Harian</h2>
+              </div>
+            </div>
+            <p class="panel-desc">Uji coba pembuatan dan pengiriman ringkasan pagi atau evaluasi malam hari dari bot.</p>
+            <div class="briefing-actions">
+              <button class="secondary-button" data-briefing="daily">
+                <span>🌅 Pratinjau Pagi</span>
+              </button>
+              <button class="secondary-button" data-briefing="nightly">
+                <span>🌙 Pratinjau Malam</span>
+              </button>
+              <button class="secondary-button" data-send-briefing="daily">
+                <span>🚀 Kirim Briefing</span>
+              </button>
+              <button class="secondary-button" data-send-briefing="nightly">
+                <span>📬 Kirim Debrief</span>
+              </button>
+            </div>
+            <div class="briefing-container">
+              <div class="briefing-header">Output Respon Briefing</div>
+              <pre class="briefing-output" id="briefingOutput">Pilih salah satu tombol di atas untuk melihat pratinjau briefing.</pre>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav class="bottom-nav" aria-label="Navigasi mobile">
+      <button class="mobile-nav-item active" data-view="overview">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <small>Ringkas</small>
+      </button>
+      <button class="mobile-nav-item" data-view="finance">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+        <small>Keuangan</small>
+      </button>
+      <button class="mobile-nav-item" data-view="health">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        <small>Kesehatan</small>
+      </button>
+      <button class="mobile-nav-item" data-view="profile">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <small>Profil</small>
+      </button>
+      <button class="mobile-nav-item" data-view="assistant">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+        <small>Asisten</small>
+      </button>
+    </nav>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>

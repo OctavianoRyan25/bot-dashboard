@@ -170,20 +170,34 @@ function openLocalView(name) {
 }
 
 // Theme handling
+function toggleTheme() {
+  const current = document.documentElement.getAttribute("data-theme");
+  const next = current === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  localStorage.setItem(THEME_KEY, next);
+  toast(`Mode ${next === "dark" ? "Gelap" : "Terang"} diaktifkan`);
+}
+
 function initTheme() {
   const savedTheme = localStorage.getItem(THEME_KEY) || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
   document.documentElement.setAttribute("data-theme", savedTheme);
-  
-  const toggleBtn = $("#themeToggle");
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", () => {
-      const current = document.documentElement.getAttribute("data-theme");
-      const next = current === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", next);
-      localStorage.setItem(THEME_KEY, next);
-      toast(`Mode ${next === "dark" ? "Gelap" : "Terang"} diaktifkan`);
-    });
-  }
+  // Wire up both desktop sidebar toggle and mobile topbar toggle
+  $$("#themeToggle, #themeToggleMobile").forEach(btn => btn?.addEventListener("click", toggleTheme));
+}
+
+// Finance View Tabs
+function initFinanceTabs() {
+  const tabBar = $("#financeTabs");
+  if (!tabBar) return;
+  tabBar.addEventListener("click", e => {
+    const btn = e.target.closest(".view-tab");
+    if (!btn) return;
+    const tabId = btn.dataset.tab;
+    // Update tab buttons
+    $$("#financeTabs .view-tab").forEach(t => t.classList.toggle("active", t === btn));
+    // Update panes
+    $$("#view-finance .tab-pane").forEach(p => p.classList.toggle("active", p.id === `tab-${tabId}`));
+  });
 }
 
 // Category Icons Mapping
@@ -550,9 +564,14 @@ function renderReminders(root, reminders, showDelete = true) {
 async function loadReminders() {
   try {
     const payload = await api("/api/v1/reminders");
-    renderReminders($("#financeReminders"), payload.data || [], true);
+    const items = payload.data || [];
+    renderReminders($("#financeReminders"), items, true);
+    renderReminders($("#homeReminders"), items, false);
   } catch (e) {
-    if (isDemoMode) renderReminders($("#financeReminders"), mockData.overview.active_reminders, true);
+    if (isDemoMode) {
+      renderReminders($("#financeReminders"), mockData.overview.active_reminders, true);
+      renderReminders($("#homeReminders"), mockData.overview.active_reminders, false);
+    }
   }
 }
 
@@ -757,15 +776,16 @@ $("#chatForm")?.addEventListener("submit", async event => {
   }
 });
 
-$$(".suggestion-chip").forEach(chip => {
-  chip.addEventListener("click", () => {
-    const prompt = chip.dataset.prompt;
-    const input = $("#chatInput");
-    if (input && prompt) {
-      input.value = prompt;
-      $("#chatForm")?.dispatchEvent(new Event("submit"));
-    }
-  });
+// Suggestion chips — event delegation
+document.addEventListener("click", e => {
+  const chip = e.target.closest(".suggestion-chip");
+  if (!chip) return;
+  const prompt = chip.dataset.prompt;
+  const input = $("#chatInput");
+  if (input && prompt) {
+    input.value = prompt;
+    $("#chatForm")?.dispatchEvent(new Event("submit"));
+  }
 });
 
 $("#clearChat")?.addEventListener("click", async () => {
@@ -847,11 +867,12 @@ function escapeHtml(value) {
   return div.innerHTML;
 }
 
-$$("[data-view], [data-view-link]").forEach(button => {
-  button.addEventListener("click", () => {
-    const target = button.dataset.view || button.dataset.viewLink;
-    if (target) openLocalView(target);
-  });
+// Use event delegation so dynamically created elements also work
+document.addEventListener("click", e => {
+  const btn = e.target.closest("[data-view], [data-view-link]");
+  if (!btn) return;
+  const target = btn.dataset.view || btn.dataset.viewLink;
+  if (target) openLocalView(target);
 });
 
 $("#refreshButton")?.addEventListener("click", () => {
@@ -862,7 +883,8 @@ $("#refreshButton")?.addEventListener("click", () => {
 function init() {
   initTheme();
   initExpenseDateFilters();
-  
+  initFinanceTabs();
+
   const now = new Date();
   const dateFormatted = new Intl.DateTimeFormat("id-ID", { weekday: "long", day: "numeric", month: "long" }).format(now);
   const todayLabel = $("#todayLabel");

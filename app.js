@@ -258,6 +258,7 @@ async function loadAll() {
     renderOverview(mockData.overview);
     renderProfile(mockData.profile, mockData.bmr, mockData.tdee);
     renderReminders($("#financeReminders"), mockData.overview.active_reminders, true);
+    renderReminders($("#homeReminders"), mockData.overview.active_reminders, false);
     renderNutritionData(mockData.nutrition);
     renderWorkoutData(mockData.workouts);
     renderExpenseReport(mockData.expenseReport);
